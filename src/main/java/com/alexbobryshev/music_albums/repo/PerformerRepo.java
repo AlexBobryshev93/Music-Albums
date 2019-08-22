@@ -6,4 +6,5 @@ public interface PerformerRepo {
     Iterable<Performer> findAll();
     Performer findById(int id);
     Performer save(Performer performer);
+    int delete(int id);
 }
