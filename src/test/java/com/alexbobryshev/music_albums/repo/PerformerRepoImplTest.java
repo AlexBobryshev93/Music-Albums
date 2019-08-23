@@ -1,6 +1,7 @@
 package com.alexbobryshev.music_albums.repo;
 
 import com.alexbobryshev.music_albums.model.Performer;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ public class PerformerRepoImplTest {
     @Autowired
     private PerformerRepo performerRepo;
 
+    private Performer testPerformer;
+
     @Test
     public void testFindAll() {
         assertNotNull(performerRepo.findAll());
@@ -27,7 +30,10 @@ public class PerformerRepoImplTest {
 
     @Test
     public void testSave() {
-        assertNotNull(performerRepo.save(new Performer(7, "Pink Floyd", Performer.Genre.ROCK)));
+        testPerformer = new Performer("Pink Floyd", Performer.Genre.ROCK);
+        testPerformer.setId(0);
+        assertNotNull(performerRepo.save(testPerformer));
+        performerRepo.delete(testPerformer.getId());
     }
 
     @Test

@@ -47,6 +47,7 @@ public class AlbumRepoImpl implements AlbumRepo {
 
     private Album mapRowToAlbum(ResultSet rs, int rowNum) throws SQLException {
         return new Album(
+                Integer.valueOf(rs.getString("id")),
                 rs.getString("name"),
                 Integer.valueOf(rs.getString("year")),
                 rs.getString("performer"));

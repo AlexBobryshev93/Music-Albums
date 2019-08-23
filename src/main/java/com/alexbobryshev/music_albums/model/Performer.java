@@ -19,4 +19,10 @@ public class Performer {
         this.id = ++counter;
         this.name = name;
     }
+
+    public Performer(String name, Genre genre) {
+        this.id = ++counter;
+        this.name = name;
+        this.genre = genre;
+    }
 }
