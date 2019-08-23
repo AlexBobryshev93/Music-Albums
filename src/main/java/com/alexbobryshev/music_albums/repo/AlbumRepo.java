@@ -6,5 +6,5 @@ public interface AlbumRepo {
     Iterable<Album> findAll();
     Album findById(int id);
     Album save(Album album);
-    void delete(int id);
+    int delete(int id);
 }

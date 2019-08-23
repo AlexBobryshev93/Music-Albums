@@ -43,8 +43,7 @@ public class PerformerRepoImpl implements PerformerRepo {
 
     @Override
     public int delete(int id) {
-        jdbcTemplate.update("delete from performers where id=?", id);
-        return id;
+        return jdbcTemplate.update("delete from performers where id=?", id);
     }
 
     private Performer mapRowToPerformer(ResultSet rs, int rowNum) throws SQLException {
