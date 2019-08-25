@@ -7,9 +7,9 @@
     <title>Music Albums CRUD application</title>
 </head>
 <body>
-<h2>Welcome to MusicAlbumsCRUD app!</h2>
+<h2>Available albums:</h2>
 <a href="/add">ADD AN ALBUM TO THE DATABASE</a>
 <br/>
-<a href="/list">FULL LIST OF THE ALBUMS</a>
+<a href="/">BACK TO THE HOMEPAGE</a>
 </body>
 </html>

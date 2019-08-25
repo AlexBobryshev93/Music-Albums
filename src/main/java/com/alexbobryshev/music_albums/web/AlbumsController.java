@@ -7,14 +7,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping
 @AllArgsConstructor
 public class AlbumsController {
     private PerformerRepo performerRepo;
 
-    @GetMapping
-    public String showGreetingsPage() {
+    @GetMapping("/add")
+    public String addAlbum() {
+        return "add";
+    }
+
+    @GetMapping("/list")
+    public String albumsList() {
         performerRepo.findAll().forEach(System.out::println);
-        return "home";
+        return "list";
+    }
+
+    @GetMapping("/edit")
+    public String editAlbum() {
+        performerRepo.findAll().forEach(System.out::println);
+        return "edit";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteAlbum() {
+        performerRepo.findAll().forEach(System.out::println);
+        return "list";
     }
 }

@@ -19,12 +19,12 @@ public class AlbumRepoImplTest {
 
     @Test
     public void testFindAll() {
-        //assertNotNull(performerRepo.findAll());
+        assertNotNull(albumRepo.findAll());
     }
 
     @Test
     public void testFindById() {
-        //assertNotNull(performerRepo.findById(0));
+        assertNotNull(albumRepo.findById(0));
     }
 
     @Test
