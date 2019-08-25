@@ -1,6 +1,6 @@
 package com.alexbobryshev.music_albums.repo;
 
-import com.alexbobryshev.music_albums.model.Performer;
+import com.alexbobryshev.music_albums.model.Album;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,26 +11,26 @@ import static org.junit.Assert.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class PerformerRepoImplTest {
+public class AlbumRepoImplTest {
     @Autowired
-    private PerformerRepo performerRepo;
+    private AlbumRepo albumRepo;
 
-    private Performer testPerformer;
+    private Album testAlbum;
 
     @Test
     public void testFindAll() {
-        assertNotNull(performerRepo.findAll());
+        //assertNotNull(performerRepo.findAll());
     }
 
     @Test
     public void testFindById() {
-        assertNotNull(performerRepo.findById(0));
+        //assertNotNull(performerRepo.findById(0));
     }
 
     @Test
     public void testSaveAndDelete() {
-        testPerformer = new Performer("Pink Floyd");
-        assertNotNull(performerRepo.save(testPerformer));
-        performerRepo.delete(testPerformer.getId());
+        testAlbum = new Album("Ten Thousand Fists", 2005, "Disturbed", Album.Genre.METAL);
+        assertNotNull(albumRepo.save(testAlbum));
+        albumRepo.delete(testAlbum.getId());
     }
 }

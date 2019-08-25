@@ -20,23 +20,25 @@ public class AlbumRepoImpl implements AlbumRepo {
 
     @Override
     public Iterable<Album> findAll() {
-        return jdbcTemplate.query("select id, name, year, performer from albums",
+        return jdbcTemplate.query("select id, name, year, performer, genre from albums",
                 this::mapRowToAlbum);
     }
 
     @Override
     public Album findById(int id) {
-        return jdbcTemplate.queryForObject("select id, name, year, performer from albums where id=?",
+        return jdbcTemplate.queryForObject("select id, name, year, performer, genre from albums where id=?",
                 this::mapRowToAlbum, id);
     }
 
     @Override
     public Album save(Album album) {
-        jdbcTemplate.update("insert into albums (id, name, year, performer) values (?, ?, ?, ?)",
+        jdbcTemplate.update("insert into albums (id, name, year, performer, genre) values (?, ?, ?, ?, ?)",
                 album.getId(),
                 album.getName(),
                 album.getYear(),
-                album.getPerformer().getName());
+                album.getPerformer().getName(),
+                album.getGenre().toString()
+        );
         return album;
     }
 
@@ -50,6 +52,7 @@ public class AlbumRepoImpl implements AlbumRepo {
                 Integer.valueOf(rs.getString("id")),
                 rs.getString("name"),
                 Integer.valueOf(rs.getString("year")),
-                rs.getString("performer"));
+                rs.getString("performer"),
+                Album.Genre.valueOf(rs.getString("genre")));
     }
 }

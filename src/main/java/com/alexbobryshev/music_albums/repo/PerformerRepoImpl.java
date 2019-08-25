@@ -22,22 +22,22 @@ public class PerformerRepoImpl implements PerformerRepo {
 
     @Override
     public Iterable<Performer> findAll() {
-        return jdbcTemplate.query("select id, name, genre from performers",
+        return jdbcTemplate.query("select id, name from performers",
                 this::mapRowToPerformer);
     }
 
     @Override
     public Performer findById(int id) {
-        return jdbcTemplate.queryForObject("select id, name, genre from performers where id=?",
+        return jdbcTemplate.queryForObject("select id, name from performers where id=?",
                 this::mapRowToPerformer, id);
     }
 
     @Override
     public Performer save(Performer performer) {
-        jdbcTemplate.update("insert into performers (id, name, genre) values (?, ?, ?)",
+        jdbcTemplate.update("insert into performers (id, name) values (?, ?)",
                 performer.getId(),
-                performer.getName(),
-                performer.getGenre().toString());
+                performer.getName()
+        );
         return performer;
     }
 
@@ -49,7 +49,7 @@ public class PerformerRepoImpl implements PerformerRepo {
     private Performer mapRowToPerformer(ResultSet rs, int rowNum) throws SQLException {
         return new Performer(
                 Integer.valueOf(rs.getString("id")),
-                rs.getString("name"),
-                Performer.Genre.valueOf(rs.getString("genre")));
+                rs.getString("name")
+        );
     }
 }

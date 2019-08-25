@@ -1,4 +1,4 @@
---delete from albums;
---delete from performers;
+delete from albums;
+delete from performers;
 
-insert into performers (id, name, genre) values (1, 'Metallica', 'METAL');
+insert into performers (id, name) values (0, 'Metallica');

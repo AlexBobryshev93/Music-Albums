@@ -11,18 +11,25 @@ public class Album {
     private String name;
     private int year;
     private Performer performer;
+    private Genre genre;
 
-    public Album(String name, int year, String performerName) {
+    public enum Genre {
+        ROCK, METAL, CHANSON, POP, JAZZ, HIP_HOP
+    }
+
+    public Album(String name, int year, String performerName, Genre genre) {
         this.id = ++counter;
         this.name = name;
         this.year = year;
         this.performer = new Performer(performerName);
+        this.genre = genre;
     }
 
-    public Album(int id, String name, int year, String performerName) {
+    public Album(int id, String name, int year, String performerName, Genre genre) {
         this.id = id;
         this.name = name;
         this.year = year;
         this.performer = new Performer(performerName);
+        this.genre = genre;
     }
 }
