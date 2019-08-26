@@ -1,5 +1,6 @@
 package com.alexbobryshev.music_albums.web;
 
+import com.alexbobryshev.music_albums.repo.AlbumRepo;
 import com.alexbobryshev.music_albums.repo.PerformerRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @AllArgsConstructor
 public class AlbumsController {
     private PerformerRepo performerRepo;
+    private AlbumRepo albumRepo;
 
     @GetMapping("/add")
     public String addAlbum() {
@@ -19,19 +21,17 @@ public class AlbumsController {
 
     @GetMapping("/list")
     public String albumsList() {
-        performerRepo.findAll().forEach(System.out::println);
+        //albumRepo.findAll().forEach(System.out::println);
         return "list";
     }
 
     @GetMapping("/edit")
     public String editAlbum() {
-        performerRepo.findAll().forEach(System.out::println);
         return "edit";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteAlbum() {
-        performerRepo.findAll().forEach(System.out::println);
         return "list";
     }
 }
