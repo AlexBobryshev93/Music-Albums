@@ -1,21 +1,24 @@
 package com.alexbobryshev.music_albums.web;
 
+import com.alexbobryshev.music_albums.model.Album;
 import com.alexbobryshev.music_albums.repo.AlbumRepo;
 import com.alexbobryshev.music_albums.repo.PerformerRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequestMapping
 @AllArgsConstructor
 public class AlbumsController {
     private PerformerRepo performerRepo;
     private AlbumRepo albumRepo;
 
     @GetMapping("/add")
-    public String addAlbum() {
+    public String addAlbum(Model model) {
+        //model.addAttribute("album", new Album());
+        model.addAttribute("genres", Album.Genre.values());
         return "add";
     }
 
@@ -33,5 +36,10 @@ public class AlbumsController {
     @GetMapping("/delete/{id}")
     public String deleteAlbum() {
         return "list";
+    }
+
+    @PostMapping("new_album")
+    public String creation() {
+        return "new_album";
     }
 }

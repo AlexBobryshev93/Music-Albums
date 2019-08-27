@@ -14,7 +14,11 @@ public class Album {
     private Genre genre;
 
     public enum Genre {
-        ROCK, METAL, CHANSON, POP, JAZZ, HIP_HOP
+        ROCK, METAL, CHANSON, POP, JAZZ, HIP_HOP, OTHER
+    }
+
+    public Album() {
+        this.id = ++counter;
     }
 
     public Album(String name, int year, String performerName, Genre genre) {
