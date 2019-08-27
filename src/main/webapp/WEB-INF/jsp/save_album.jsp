@@ -7,8 +7,9 @@
     <title>Music Albums CRUD application</title>
 </head>
 <body>
-<h2>Save an album:</h2>
-    <!-- ID: -->
+<h2>An album saved:</h2>
+    ID: ${album.id}
+    <br><br>
     Name: <%= request.getParameter("name") %>
     <br><br>
     Year: <%= request.getParameter("year") %>

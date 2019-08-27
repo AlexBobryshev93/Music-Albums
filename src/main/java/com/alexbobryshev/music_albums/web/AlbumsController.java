@@ -6,21 +6,20 @@ import com.alexbobryshev.music_albums.repo.PerformerRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @Controller
 @AllArgsConstructor
+@SessionAttributes("album")
 public class AlbumsController {
     private PerformerRepo performerRepo;
     private AlbumRepo albumRepo;
 
     @GetMapping("/add")
     public String addAlbum(Model model) {
-        //model.addAttribute("album", new Album());
+        model.addAttribute("album", new Album());
         model.addAttribute("genres", Album.Genre.values());
         return "add";
     }
@@ -45,7 +44,8 @@ public class AlbumsController {
     }
 
     @PostMapping("save_album")
-    public String creation() {
+    public String creation(@ModelAttribute Album album) {
+        albumRepo.save(album);
         return "save_album";
     }
 }

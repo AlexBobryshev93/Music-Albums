@@ -17,7 +17,7 @@
     <p>Genre: ${album.genre.toString()}</p>
     <a href="/edit/${album.id}">edit</a>
     <a href="/delete/${album.id}">delete</a>
-    <br />
+    <br /><br />
 </c:forEach>
 <br />
 <a href="/add">ADD AN ALBUM TO THE DATABASE</a>
