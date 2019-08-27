@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @AllArgsConstructor
 public class AlbumsController {
@@ -23,8 +26,8 @@ public class AlbumsController {
     }
 
     @GetMapping("/list")
-    public String albumsList() {
-        //albumRepo.findAll().forEach(System.out::println);
+    public String albumsList(Model model) {
+        model.addAttribute("list", (ArrayList<Album>) albumRepo.findAll());
         return "list";
     }
 
