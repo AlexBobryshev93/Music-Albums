@@ -15,6 +15,8 @@
     <p>Performer: ${album.performer.name}</p>
     <p>Year: ${album.year}</p>
     <p>Genre: ${album.genre.toString()}</p>
+    <a href="/edit/${album.id}">edit</a>
+    <a href="/delete/${album.id}">delete</a>
     <br />
 </c:forEach>
 <br />

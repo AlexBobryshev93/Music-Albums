@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -31,13 +32,14 @@ public class AlbumsController {
         return "list";
     }
 
-    @GetMapping("/edit")
+    @GetMapping("/edit/{id}")
     public String editAlbum() {
         return "edit";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteAlbum() {
+    public String deleteAlbum(@PathVariable String id) {
+        albumRepo.delete(Integer.valueOf(id));
         return "list";
     }
 
