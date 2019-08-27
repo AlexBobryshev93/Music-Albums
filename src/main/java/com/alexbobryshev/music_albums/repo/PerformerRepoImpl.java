@@ -34,6 +34,12 @@ public class PerformerRepoImpl implements PerformerRepo {
 
     @Override
     public Performer save(Performer performer) {
+        for(Performer p : findAll()) {
+            if (p.getName().trim().toLowerCase().equals(performer.getName().trim().toLowerCase())) {
+                return p;
+            }
+        }
+
         jdbcTemplate.update("insert into performers (id, name) values (?, ?)",
                 performer.getId(),
                 performer.getName()

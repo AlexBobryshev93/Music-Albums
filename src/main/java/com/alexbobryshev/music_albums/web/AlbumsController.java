@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -33,7 +32,9 @@ public class AlbumsController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editAlbum() {
+    public String editAlbum(@PathVariable String id, Model model) {
+        model.addAttribute("genres", Album.Genre.values());
+        model.addAttribute("album", albumRepo.findById(Integer.valueOf(id)));
         return "edit";
     }
 
@@ -43,8 +44,8 @@ public class AlbumsController {
         return "list";
     }
 
-    @PostMapping("new_album")
+    @PostMapping("save_album")
     public String creation() {
-        return "new_album";
+        return "save_album";
     }
 }

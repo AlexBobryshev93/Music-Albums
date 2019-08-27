@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>Add a new album:</h2>
-<form action="/new_album" method="POST">
+<form action="/save_album" method="POST">
     Name: <input name="name" />
     <br><br>
     Year: <input type="number" name="year" min="1920" max="2100"/>

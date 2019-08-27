@@ -7,7 +7,7 @@
     <title>Music Albums CRUD application</title>
 </head>
 <body>
-<h2>a new album:</h2>
+<h2>Save an album:</h2>
     <!-- ID: -->
     Name: <%= request.getParameter("name") %>
     <br><br>
