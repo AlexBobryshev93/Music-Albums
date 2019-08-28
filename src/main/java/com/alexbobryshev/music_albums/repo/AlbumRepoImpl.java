@@ -40,6 +40,15 @@ public class AlbumRepoImpl implements AlbumRepo {
 
     @Override
     public Album save(Album album) {
+        for(Album alb : findAll()) {
+            if (alb.getName().trim().toLowerCase().equals(album.getName().trim().toLowerCase()) &&
+                    alb.getPerformer().getName().trim().toLowerCase()
+                            .equals(album.getPerformer().getName().trim().toLowerCase()) &&
+            alb.getYear() == album.getYear()) {
+                return alb;
+            }
+        }
+
         jdbcTemplate.update("insert into albums (id, name, year, performer, genre) values (?, ?, ?, ?, ?)",
                 album.getId(),
                 album.getName(),

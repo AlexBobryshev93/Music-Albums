@@ -1,10 +1,8 @@
 package com.alexbobryshev.music_albums.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class Album {
     private static int counter;
     private int id;
@@ -19,14 +17,6 @@ public class Album {
 
     public Album() {
         this.id = ++counter;
-    }
-
-    public Album(String name, int year, String performerName, Genre genre) {
-        this.id = ++counter;
-        this.name = name;
-        this.year = year;
-        this.performer = new Performer(performerName);
-        this.genre = genre;
     }
 
     public Album(int id, String name, int year, String performerName, Genre genre) {

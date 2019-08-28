@@ -52,6 +52,7 @@ public class PerformerRepoImpl implements PerformerRepo {
                 performer.getId(),
                 performer.getName()
         );
+        Performer.setCounter(performer.getId() + 1);
         return performer;
     }
 

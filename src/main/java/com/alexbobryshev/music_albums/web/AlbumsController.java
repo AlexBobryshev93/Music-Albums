@@ -46,14 +46,13 @@ public class AlbumsController {
     }
 
     @PostMapping("save_album")
-    public String creation(@ModelAttribute Album album) {
+    public String creation(@ModelAttribute Album album, Model model) {
         if (albumRepo.findById(album.getId()) != null) albumRepo.delete(album.getId()); // create or update
         while (performerRepo.findById(album.getPerformer().getId()) != null) album.getPerformer().
                 setId(album.getPerformer().getId() + 1); // unique id problem solving (in order to prevent the replacement of an existing one)
 
         performerRepo.save(album.getPerformer());
-        Performer.setCounter(album.getPerformer().getId() + 1);
-        albumRepo.save(album);
+        model.addAttribute("album", albumRepo.save(album)); // save(album) will return a new or an old album
         return "save_album";
     }
 }
