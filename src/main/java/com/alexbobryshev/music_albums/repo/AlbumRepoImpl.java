@@ -2,6 +2,7 @@ package com.alexbobryshev.music_albums.repo;
 
 import com.alexbobryshev.music_albums.model.Album;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -26,8 +27,15 @@ public class AlbumRepoImpl implements AlbumRepo {
 
     @Override
     public Album findById(int id) {
-        return jdbcTemplate.queryForObject("select id, name, year, performer, genre from albums where id=?",
-                this::mapRowToAlbum, id);
+        Album album;
+        try {
+            album = jdbcTemplate.queryForObject("select id, name, year, performer, genre from albums where id=?",
+                    this::mapRowToAlbum, id);
+        } catch (EmptyResultDataAccessException e) {
+            album = null;
+        }
+
+        return album;
     }
 
     @Override

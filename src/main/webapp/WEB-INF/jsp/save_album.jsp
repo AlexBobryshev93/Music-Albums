@@ -10,13 +10,13 @@
 <h2>An album saved:</h2>
     ID: ${album.id}
     <br><br>
-    Name: <%= request.getParameter("name") %>
+    Name: ${album.name}
     <br><br>
-    Year: <%= request.getParameter("year") %>
+    Year: ${album.year}
     <br><br>
-    Performer: <%= request.getParameter("performer") %>
+    Performer: ${album.performer.name}
     <br><br>
-    Genre: <%= request.getParameter("genre") %>
+    Genre: ${album.genre}
     <br><br>
 <a href="/list">FULL LIST OF THE ALBUMS</a>
 <br/>

@@ -10,13 +10,13 @@
 <body>
 <h2>Edit the album:</h2>
 <form action="/save_album" method="POST">
-    ID: ${album.id}
+    ID: ${album.id} <input name="id" value="${album.id}" hidden/>
     <br><br>
-    Name: <input name="name" value="${album.name}"/>
+    Name: <input name="name" value="${album.name}" maxlength="50" required/>
     <br><br>
-    Year: <input type="number" name="year" value="${album.year}" min="1920" max="2100"/>
+    Year: <input type="number" name="year" value="${album.year}" min="1920" max="2100" required/>
     <br><br>
-    Performer: <input name="performer" value="${album.performer.name}"/>
+    Performer: <input name="performer" value="${album.performer.name}" maxlength="25" required/>
     <br><br>
     Genre: <select name="genre">
     <c:forEach var="genre" items="${genres}">

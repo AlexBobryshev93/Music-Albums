@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-
 @Controller
 @AllArgsConstructor
 @SessionAttributes("album")
@@ -26,7 +24,7 @@ public class AlbumsController {
 
     @GetMapping("/list")
     public String albumsList(Model model) {
-        model.addAttribute("list", (ArrayList<Album>) albumRepo.findAll());
+        model.addAttribute("list", albumRepo.findAll());
         return "list";
     }
 
@@ -40,11 +38,13 @@ public class AlbumsController {
     @GetMapping("/delete/{id}")
     public String deleteAlbum(@PathVariable String id) {
         albumRepo.delete(Integer.valueOf(id));
-        return "list";
+        return "redirect:/list";
     }
 
     @PostMapping("save_album")
     public String creation(@ModelAttribute Album album) {
+        if (albumRepo.findById(album.getId()) != null) albumRepo.delete(album.getId());
+        performerRepo.save(album.getPerformer());
         albumRepo.save(album);
         return "save_album";
     }

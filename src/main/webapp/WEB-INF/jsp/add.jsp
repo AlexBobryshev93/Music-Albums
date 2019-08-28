@@ -10,13 +10,15 @@
 <body>
 <h2>Add a new album:</h2>
 <form action="/save_album" method="POST">
-    Name: <input name="name" required/>
+    ID: ${album.id}
+    <br><br>
+    Name: <input name="name" maxlength="50" required/>
     <br><br>
     Year: <input type="number" name="year" min="1920" max="2100" required/>
     <br><br>
-    Performer: <input name="performer" value="unknown" required/>
+    Performer: <input name="performer" value="unknown" maxlength="25" required/>
     <br><br>
-    Genre: <select name="genre" value="OTHER">
+    Genre: <select name="genre">
     <c:forEach var="genre" items="${genres}">
         <option>${genre}</option>
     </c:forEach>

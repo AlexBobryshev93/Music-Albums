@@ -1,16 +1,18 @@
 CREATE TABLE IF NOT EXISTS performers
 (
-    id bigint NOT NULL PRIMARY KEY,
-    name character varying(25) NOT NULL
+    id BIGINT NOT NULL PRIMARY KEY,
+    name CHARACTER VARYING(25) NOT NULL
 );
 
--- FK needs to be added
 CREATE TABLE IF NOT EXISTS albums
 (
-    id bigint NOT NULL PRIMARY KEY,
-    name character varying(50) NOT NULL,
-    year bigint,
-    performer character varying(25),
-    genre character varying(25)
+    id BIGINT NOT NULL PRIMARY KEY,
+    name CHARACTER VARYING(50) NOT NULL,
+    year BIGINT,
+    performer CHARACTER VARYING(25),
+    genre CHARACTER VARYING(25)
 );
+
+--ALTER TABLE albums
+    --ADD FOREIGN KEY (performer) REFERENCES performers(name) ;
 
