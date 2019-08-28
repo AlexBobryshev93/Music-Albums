@@ -20,7 +20,12 @@
     <br><br>
     Genre: <select name="genre">
     <c:forEach var="genre" items="${genres}">
-        <option>${genre}</option>
+        <c:if test="${genre == album.genre}">
+            <option selected>${genre}</option>
+        </c:if>
+        <c:if test="${genre != album.genre}">
+            <option>${genre}</option>
+        </c:if>
     </c:forEach>
 </select>
     <br><br>
