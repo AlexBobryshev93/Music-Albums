@@ -1,6 +1,6 @@
-delete from albums;
-delete from performers;
+--DELETE FROM albums;
+--DELETE FROM performers;
 
-insert into performers (id, name) values (0, 'Metallica');
+INSERT INTO performers (id, name) VALUES (0, 'Metallica');
 
-insert into albums (id, name, year, performer, genre) values (0, 'Machine Head', 1971, 'Deep Purple', 'ROCK');
+INSERT INTO albums (id, name, year, performer, genre) VALUES (0, 'Machine Head', 1971, 'Deep Purple', 'ROCK');
