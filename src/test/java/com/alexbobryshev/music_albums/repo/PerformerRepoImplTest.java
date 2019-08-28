@@ -1,6 +1,7 @@
 package com.alexbobryshev.music_albums.repo;
 
 import com.alexbobryshev.music_albums.model.Performer;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +20,24 @@ public class PerformerRepoImplTest {
 
     @Test
     public void testFindAll() {
-        testPerformer = new Performer("testPerformer_AQHGF124");
+        testPerformer = new Performer(-1, "testPerformer_AQHGF124");
+        performerRepo.save(testPerformer);
         assertNotNull(performerRepo.findAll());
         performerRepo.delete(testPerformer.getId());
     }
 
     @Test
     public void testFindById() {
-        testPerformer = new Performer("testPerformer_AQHGF124");
-        assertNotNull(performerRepo.findById(0));
+        testPerformer = new Performer(-1, "testPerformer_AQHGF124");
+        performerRepo.save(testPerformer);
+        assertNotNull(performerRepo.findById(testPerformer.getId()));
         performerRepo.delete(testPerformer.getId());
     }
 
     @Test
+    @Ignore("testSaveAndDelete() was ignored because of testing in other testing methods")
     public void testSaveAndDelete() {
-        testPerformer = new Performer("testPerformer_AQHGF124");
+        testPerformer = new Performer(-1, "testPerformer_AQHGF124");
         assertNotNull(performerRepo.save(testPerformer));
         performerRepo.delete(testPerformer.getId());
     }
