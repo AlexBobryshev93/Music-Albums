@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS albums
     genre CHARACTER VARYING(25)
 );
 
+-- DB should ne redesigned with using of FK
 --ALTER TABLE albums
     --ADD FOREIGN KEY (performer) REFERENCES performers(name) ;
 
