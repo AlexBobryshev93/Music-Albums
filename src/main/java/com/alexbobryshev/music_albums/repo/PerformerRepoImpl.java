@@ -3,6 +3,7 @@ package com.alexbobryshev.music_albums.repo;
 import com.alexbobryshev.music_albums.model.Performer;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -28,8 +29,15 @@ public class PerformerRepoImpl implements PerformerRepo {
 
     @Override
     public Performer findById(int id) {
-        return jdbcTemplate.queryForObject("select id, name from performers where id=?",
-                this::mapRowToPerformer, id);
+        Performer performer;
+        try {
+            performer = jdbcTemplate.queryForObject("select id, name from performers where id=?",
+                    this::mapRowToPerformer, id);
+        } catch (EmptyResultDataAccessException e) {
+            performer = null;
+        }
+
+        return performer;
     }
 
     @Override
