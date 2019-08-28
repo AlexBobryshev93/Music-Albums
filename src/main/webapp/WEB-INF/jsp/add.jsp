@@ -10,8 +10,7 @@
 <body>
 <h2>Add a new album:</h2>
 <form action="/save_album" method="POST">
-    ID: ${album.id}
-    <br><br>
+    <!-- ID: ${album.id} <br><br> -->
     Name: <input name="name" maxlength="50" required/>
     <br><br>
     Year: <input type="number" name="year" min="1920" max="2100" required/>

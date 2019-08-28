@@ -19,17 +19,21 @@ public class PerformerRepoImplTest {
 
     @Test
     public void testFindAll() {
+        testPerformer = new Performer("testPerformer_AQHGF124");
         assertNotNull(performerRepo.findAll());
+        performerRepo.delete(testPerformer.getId());
     }
 
     @Test
     public void testFindById() {
+        testPerformer = new Performer("testPerformer_AQHGF124");
         assertNotNull(performerRepo.findById(0));
+        performerRepo.delete(testPerformer.getId());
     }
 
     @Test
     public void testSaveAndDelete() {
-        testPerformer = new Performer("Pink Floyd");
+        testPerformer = new Performer("testPerformer_AQHGF124");
         assertNotNull(performerRepo.save(testPerformer));
         performerRepo.delete(testPerformer.getId());
     }

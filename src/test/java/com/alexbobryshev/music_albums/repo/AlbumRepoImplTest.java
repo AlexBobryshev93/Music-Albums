@@ -19,17 +19,22 @@ public class AlbumRepoImplTest {
 
     @Test
     public void testFindAll() {
+        testAlbum = new Album(-1, "Ten Thousand Fists", 2005, "Disturbed", Album.Genre.METAL);
         assertNotNull(albumRepo.findAll());
+        albumRepo.delete(testAlbum.getId());
     }
 
     @Test
     public void testFindById() {
-        assertNotNull(albumRepo.findById(0));
+        testAlbum = new Album(-1, "Ten Thousand Fists", 2005, "Disturbed", Album.Genre.METAL);
+        albumRepo.save(testAlbum);
+        assertNotNull(albumRepo.findById(-1));
+        albumRepo.delete(testAlbum.getId());
     }
 
     @Test
     public void testSaveAndDelete() {
-        testAlbum = new Album("Ten Thousand Fists", 2005, "Disturbed", Album.Genre.METAL);
+        testAlbum = new Album(-1, "Ten Thousand Fists", 2005, "Disturbed", Album.Genre.METAL);
         assertNotNull(albumRepo.save(testAlbum));
         albumRepo.delete(testAlbum.getId());
     }
