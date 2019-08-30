@@ -11,3 +11,6 @@ Technologies used:
 -JDBC
 -JSP
 -Spring Framework (Core, Boot, MVC, Data)
+
+by default you can launch it under:
+http://localhost:8080/
