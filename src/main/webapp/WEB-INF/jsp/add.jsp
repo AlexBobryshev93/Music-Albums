@@ -13,7 +13,7 @@
     <!-- ID: ${album.id} <br><br> -->
     Name: <input name="name" maxlength="50" required/>
     <br><br>
-    Year: <input type="number" name="year" min="1920" max="2100" required/>
+    Year: <input type="number" name="year" min="1920" max="2030" required/>
     <br><br>
     Performer: <input name="performer" value="unknown" maxlength="25" required/>
     <br><br>

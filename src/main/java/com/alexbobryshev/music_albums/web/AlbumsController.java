@@ -1,7 +1,6 @@
 package com.alexbobryshev.music_albums.web;
 
 import com.alexbobryshev.music_albums.model.Album;
-import com.alexbobryshev.music_albums.model.Performer;
 import com.alexbobryshev.music_albums.repo.AlbumRepo;
 import com.alexbobryshev.music_albums.repo.PerformerRepo;
 import lombok.AllArgsConstructor;
